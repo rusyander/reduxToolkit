@@ -3,9 +3,10 @@ import { useDispatch } from "react-redux";
 import { deleteTodo, toggle } from "../store/todoSlise";
 
 export default function TodoItem(props: any) {
+  const id = props.todos.id;
   const dispatch = useDispatch();
-  const deleteTask = () => dispatch(deleteTodo(props.todos.id));
-  const toggleTask = () => dispatch(toggle(props.todos.id));
+  const deleteTask = () => dispatch(deleteTodo({ id }));
+  const toggleTask = () => dispatch(toggle({ id }));
 
   return (
     <div>

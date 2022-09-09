@@ -8,7 +8,7 @@ function App() {
   const [text, setText] = useState("");
   const dispatch = useDispatch();
   const addTask = () => {
-    dispatch(addTodo(text));
+    dispatch(addTodo({ text }));
     setText("");
   };
 

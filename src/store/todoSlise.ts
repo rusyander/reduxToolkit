@@ -12,22 +12,20 @@ const todoSlice = createSlice({
 
       state.todos.push({
         id: new Date().toISOString(),
-        text: action.payload,
+        text: action.payload.text,
         complited: false,
       });
     },
     deleteTodo: (state, action) => {
       state.todos = state.todos.filter(
-        (todo: any) => todo.id !== action.payload
+        (todo: any) => todo.id !== action.payload.id
       );
     },
     toggle: (state: any, action) => {
-      state.todos = state.todos.map((todo: any) => {
-        if (todo.id !== action.payload) {
-          return todo;
-        }
-        return { ...todo, complited: !todo.complited };
-      });
+      const togglleTodo = state.todos.find(
+        (todo: any) => todo.id === action.payload.id
+      );
+      togglleTodo.complited = !togglleTodo.complited;
     },
   },
 });
